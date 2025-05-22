@@ -24,4 +24,4 @@ jobs:
 
       # 3) Compiler et lancer les tests Maven
       - name: Build and test with Maven
-        run: mvn -B clean verify
+        run: mvn -B clean verify -f simple-api/pom.xml
