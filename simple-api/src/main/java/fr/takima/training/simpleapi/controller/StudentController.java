@@ -71,4 +71,9 @@ public class StudentController {
 
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping(value = "/tests")
+    public ResponseEntity<Object> getTests() {
+        return  ResponseEntity.ok(studentService.getAll());
+    }
 }
