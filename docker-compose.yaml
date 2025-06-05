@@ -7,7 +7,9 @@ services:
     volumes:
       - db-volume:/var/lib/postgresql/data
     networks:
-      - my-network
+      app-network:
+        aliases:
+          - database
 
   simple-api:
     build: "simple-api"
@@ -17,14 +19,16 @@ services:
       - DATABASE_HOST=database
       - DATABASE_PASSWORD=pwd
     networks:
-      - my-network
+      app-network:
+        aliases:
+          - simple-api
 
   httpd:
     build: "http-server"
     ports:
       - "80:80"
     networks:
-      - my-network
+      - app-network
 
 networks:
   my-network:
